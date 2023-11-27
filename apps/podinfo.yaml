@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: guestbook
+  name: podinfo
   namespace: argocd
   finalizers:
     # without this, deleting app won't delete res it manages.
