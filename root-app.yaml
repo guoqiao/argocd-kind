@@ -11,7 +11,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:guoqiao/argocd-kind.git
+    # repoURL: git@github.com:guoqiao/argocd-kind.git
+    repoURL: https://github.com/guoqiao/argocd-kind.git
     targetRevision: HEAD
     path: apps
   destination:  # which cluster to install this root-app
