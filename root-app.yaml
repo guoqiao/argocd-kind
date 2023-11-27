@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: root-app
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:guoqiao/argocd-kind.git
+    targetRevision: HEAD
+    path: apps
+  destination:  # which cluster to install this root-app
+    name: in-cluster  # the cluster where argocd is installed
+    namespace: default  # default namespace if metadata.namespace is not set
+  syncPolicy:
+    automated: {}
