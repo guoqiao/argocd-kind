@@ -1,0 +1,20 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: plain
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/guoqiao/argocd-kind.git
+    targetRevision: HEAD
+    path: plain
+
+  destination:
+    namespace: default
+    name: in-cluster
