@@ -22,4 +22,6 @@ spec:
     name: in-cluster
     namespace: default
     syncPolicy:
-      automated: {}
+      automated:
+        prune: true
+        selfHeal: true
