@@ -1,0 +1,25 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: guestbook
+  namespace: argocd
+  finalizers:
+    # without this, deleting app won't delete res it manages.
+    # To perform a casading delete, you must add the finalizer
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: default
+  source:
+    repoURL: 'https://stefanprodan.github.io/podinfo'
+    chart: podinfo
+    targetRevision: 6.5.3
+  destination:
+    namespace: default
+    name: in-cluster
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
