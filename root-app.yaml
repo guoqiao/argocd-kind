@@ -15,6 +15,8 @@ spec:
     repoURL: https://github.com/guoqiao/argocd-kind.git
     targetRevision: HEAD
     path: apps
+    directory:
+      recurse: true
   destination:  # which cluster to install this root-app
     name: in-cluster  # the cluster where argocd is installed
     namespace: default  # default namespace if metadata.namespace is not set
