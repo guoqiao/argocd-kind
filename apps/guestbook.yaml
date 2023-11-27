@@ -13,10 +13,17 @@ metadata:
 spec:
   project: default
   source:
+    # gitlab requires .git suffix
     repoURL: 'https://github.com/argoproj/argocd-example-apps.git'
     targetRevision: HEAD
-    path: guestbook
-    directory: {}
+    path: guestbook  # plain manifest files in this dir
+    # optional, argod can detect path containers plain manifest files.
+    directory:
+      recurse: true  # default to false
+      include: "*.yaml"  # default: .yaml, .yml, .json
+      # include: "{*.yml,*.yaml}"
+      # include: "mydir/*"
+      # exclude: '{config.json,env-usw2/*}'
   destination:
     # server: 'https://kubernetes.default.svc'
     name: in-cluster
