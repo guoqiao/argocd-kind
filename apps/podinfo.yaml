@@ -4,7 +4,7 @@ kind: Application
 
 metadata:
   name: podinfo
-  namespace: argocd
+  namespace: argocd  # app ns must be the same as argocd ns
   finalizers:
     # without this, deleting app won't delete res it manages.
     # To perform a casading delete, you must add the finalizer
@@ -15,12 +15,12 @@ spec:
 
   source:
     repoURL: 'https://stefanprodan.github.io/podinfo'
-    chart: podinfo
+    chart: podinfo  # this tells argocd above url is a helm repo
     targetRevision: 6.5.3
 
   destination:
-    namespace: default
     name: in-cluster
+    namespace: default
 
   syncPolicy:
     automated:
